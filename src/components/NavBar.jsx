@@ -16,7 +16,7 @@ export default function NavBar({nombre}) {
           <a href="index.html" className="text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2">Category 3</a>
         </div>
         <div>
-          <CartWidget/>
+          <a href="index.html"><CartWidget/></a>
         </div>
       </nav>
      

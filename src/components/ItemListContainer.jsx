@@ -1,10 +1,13 @@
+import ItemCount from "./ItemCount";
 
 
 export default function ItemListContainer(props) {
 
     return (
         <>
-        {props.greeting}
+        <ItemCount
+            stock={10}
+        />
         </>
     )
 }
