@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {getProducts} from '../../utils/productos';
 import { ItemList } from './ItemList';
 
-export const ItemListContainer = () => {
+const ItemListContainer = () => {
 
     const [products, setProducts] = useState([]);
 
@@ -21,3 +21,5 @@ export const ItemListContainer = () => {
     </>
   )
 }
+
+export default ItemListContainer;
