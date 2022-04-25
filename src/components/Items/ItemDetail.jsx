@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 const ItemDetail = ({product}) => {
 
@@ -16,7 +16,7 @@ const ItemDetail = ({product}) => {
                     <h4>{product.descripcion}</h4>
                 </div>
             </div>
-            </div>
+        </div>
   )
 };
 
