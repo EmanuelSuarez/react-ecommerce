@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 
-export default function ItemCount({stock}) {
+export default function ItemCount({ stock, addToCart }) {
 
     const [count, setCount] = useState(0);
     const adding = () => {
@@ -22,8 +22,8 @@ export default function ItemCount({stock}) {
 
     return (
         <>
-        <div className="container ml-auto mr-auto w-64 border-solid border-2 border-black">
-            <div className="flex justify-around items-center mb-5">
+        <div className="container w-64 border-solid border-2 border-black">
+            <div className="flex justify-around mb-5">
                 <button 
                 className="rounded-full bg-red-500 p-2 w-10"
                 onClick={subs}
@@ -40,9 +40,9 @@ export default function ItemCount({stock}) {
             <div className="flex items-center">
                 <button 
                     className="rounded-full bg-blue-500 p-2 w-64"
-                    onClick={onAdd}
+                    onClick={() => addToCart(count)}
                 
-                >Comprar</button>
+                >Agregar al carrito</button>
             </div>
         </div>
         </>

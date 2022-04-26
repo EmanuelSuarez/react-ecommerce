@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 
 export default function ItemDetailContainer() {
 
-    const [product, setProduct] = useState('');
+    const [product, setProduct] = useState({});
     let params = useParams();
     const [productId, setProductId] = useState(params.id);
 
