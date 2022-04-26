@@ -6,8 +6,7 @@ const ItemDetail = ({product}) => {
 
     const [inCart, setInCart] = useState(false);
 
-    const addToCart = (quantity) => {
-        console.log(quantity);
+    const toCart = (quantity) => {
         setInCart(true);
     }
 
@@ -27,7 +26,7 @@ const ItemDetail = ({product}) => {
                     </div>
                     <div className='mt-10 ml-8'>
                         {
-                            inCart ? <Link className="rounded-full bg-blue-500 p-2 w-64" to={'/cart'}>Finalizar Compra</Link> : <ItemCount stock={product.stock} addToCart={addToCart}/>
+                            inCart ? <Link className="rounded-full bg-blue-500 p-2 w-64" to={'/cart'}>Finalizar Compra</Link> : <ItemCount product={product} toCart={toCart}/>
                         }
                     </div>
                 </div>

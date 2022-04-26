@@ -17,7 +17,7 @@ export default function NavBar({nombre}) {
           <Link to={"/category/air-max"} className="text-lg no-underline text-grey-darkest hover:text-blue-dark ml-2">Air Max</Link>
         </div>
         <div>
-          <a href="index.html"><CartWidget/></a>
+          <Link to={'/cart'} ><CartWidget/></Link>
         </div>
       </nav>
      

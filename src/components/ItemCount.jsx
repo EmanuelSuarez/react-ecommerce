@@ -1,22 +1,20 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
+import { CartContext } from "./CartContext";
 
 
-export default function ItemCount({ stock, addToCart }) {
+export default function ItemCount({ product, toCart }) {
+
+    const { addToCart } = useContext(CartContext);
 
     const [count, setCount] = useState(0);
     const adding = () => {
-        if (count < stock) {
+        if (count < product.stock) {
             setCount(count + 1)
         }
     }
     const subs = () => {
         if (count > 0) {
             setCount(count - 1)
-        }
-    }
-    const onAdd = () => {
-        if (count !== 0) {
-            alert(`You aded ${count} items to your cart`)
         }
     }
 
@@ -40,7 +38,10 @@ export default function ItemCount({ stock, addToCart }) {
             <div className="flex items-center">
                 <button 
                     className="rounded-full bg-blue-500 p-2 w-64"
-                    onClick={() => addToCart(count)}
+                    onClick={() => {
+                        addToCart({ ...product, count });
+                        toCart(count);
+                    }}
                 
                 >Agregar al carrito</button>
             </div>
