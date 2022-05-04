@@ -2,8 +2,8 @@ import NavBar from './components/NavBar';
 import ItemListContainer from './components/Items/ItemListContainer';
 import ItemDetailContainer from './components/Items/ItemDetailContainer';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import CartContextProvider from './components/CartContext';
-import Cart from './components/Cart';
+import CartContextProvider from './components/cart/CartContext';
+import Cart from './components/cart/Cart';
 
 export default function App() {
 
