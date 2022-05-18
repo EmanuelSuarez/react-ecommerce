@@ -1,12 +1,13 @@
 # React E-commerce 
-This is a desc
+
+![React App](https://user-images.githubusercontent.com/67304740/169173053-98d8a332-d11a-4ee6-8ae9-f584c253ccd7.gif)
 
 ## install
 1. download the repository
 2. npm install
 3. npm run start
 
-## deploy to firebase
+## Deploy to firebase
 https://firebase.google.com/docs/hosting/quickstart#install-cli
 
 ## Usage
