@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { CartContext } from './cart/CartContext';
 import { collection, getFirestore, addDoc } from 'firebase/firestore';
+import Swal from 'sweetalert2'
 
 const CheckoutForm = () => {
 
@@ -9,14 +10,14 @@ const CheckoutForm = () => {
     const [ buyerPhone, setBuyerPhone ] = useState('');
     const [ buyerEmail, setBuyerEmail ] = useState('');
     const [ items, setItems ] = useState({});
-    // const [orderId, setOrderId] = useState()
 
     useEffect( () => {
         const itemsObj = cart.map((item) => ({ id: item.id, title: item.name, price: item.price, count: item.count}))
         setItems(itemsObj);
     }, [])
 
-    const checkout = () => {
+    const checkout = (e) => {
+        e.preventDefault()
 
         const order = {
             buyer: { name: buyerName, phone: buyerPhone, email: buyerEmail},
@@ -27,7 +28,14 @@ const CheckoutForm = () => {
         const db = getFirestore();
         const ordersCollection = collection(db, 'orders')
         addDoc(ordersCollection, order)
-        .then(({ id }) => console.log(id));
+        .then(({ id }) =>  {
+            Swal.fire({
+                icon: 'success',
+                title: 'Felicitaciones! completaste tu compra',
+                text: `Codigo de orden: ${id}`
+              })
+            
+        })
         clear()
     }
 
