@@ -6,7 +6,6 @@ const CartContextProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
     const [cartCount, setCartCount] = useState(0);
     const [total, setTotal] = useState(0);
-    
 
 
     const addToCart = (item) => {
@@ -15,7 +14,7 @@ const CartContextProvider = ({ children }) => {
         if (itemId === -1) {
             setCart([ ...cart, item ]);
             setCartCount(cartCount + item.count)
-            setTotal(total + (parseFloat(item.precio) * item.count))
+            setTotal(total + (Number(item.price) * item.count))
             console.log(`item agregado al cart`);
         } else {
             const cartCopy = [...cart];
@@ -25,7 +24,7 @@ const CartContextProvider = ({ children }) => {
                 cartCopy[itemId].count = cartCopy[itemId].count + item.count;
                 setCart(cartCopy);
                 setCartCount(cartCount + item.count)
-                setTotal(total + (parseFloat(item.precio) * item.count))
+                setTotal(total + (Number(item.price) * item.count))
             };
         }
     }
@@ -36,7 +35,7 @@ const CartContextProvider = ({ children }) => {
         cartCopy[itemId].count = cartCopy[itemId].count + 1;
         setCart(cartCopy);
         setCartCount(cartCount + 1)
-        setTotal(total + parseFloat(item.precio))
+        setTotal(total + Number(item.price))
     }
 
     const subtractItem = (item) => {
@@ -45,13 +44,16 @@ const CartContextProvider = ({ children }) => {
         cartCopy[itemId].count = cartCopy[itemId].count - 1;
         setCart(cartCopy);
         setCartCount(cartCount - 1)
-        setTotal(total - parseFloat(item.precio))
+        setTotal(total - Number(item.price))
     }
 
     const removeFromCart = (id, count, price) => {
-        setCart(cart.filter( item => item.id !== id));
-        setCartCount(0)
-        setTotal(total - (count * price))
+        const itemId = cart.findIndex( (cart) => cart.id === id)
+        const cartCopy = [...cart];
+        cartCopy.slice(itemId)
+        setCart(cartCopy)
+        setCartCount(cartCount - count)
+        setTotal(total - price)
     };
 
     const clear = () => {

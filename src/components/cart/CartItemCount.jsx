@@ -5,7 +5,6 @@ export default function CartItemCount({ product }) {
 
     const { cart, addToCart, addItem, subtractItem } = useContext(CartContext);
     const [itemCount, setItemCount] = useState(product.count)
-    console.log(product.count);
 
     const add = () => {
         if ( product.count < product.stock ) {
@@ -21,19 +20,17 @@ export default function CartItemCount({ product }) {
     }
 
     return (
-        <div className="container w-32 border-solid border-2 border-black mt-2">
+        <div className="container w-32 border-solid mt-2">
         <div className="flex justify-around my-2">
-            <button 
-            className="rounded-full bg-black p-2 w-10 text-white"
-            onClick={subtract}
-            >-</button>
+            {itemCount > 1 ?
+            <button className="rounded-sm bg-black p-2 w-10 text-white" onClick={subtract}>-</button>
+            : <button className="rounded-sm bg-gray-200 p-2 w-10 text-white">-</button>}
 
-            <p >{itemCount}</p>
+            <p className='pt-2'>{itemCount}</p>
 
-            <button
-            className="rounded-full bg-black p-2 w-10 text-white"
-            onClick={add}
-            >+</button>
+            {product.stock > itemCount ?
+            <button className="rounded-sm bg-black p-2 w-10 text-white" onClick={add}>+</button>
+            : <button className="rounded-sm bg-gray-200 p-2 w-10 text-white">+</button>}
         </div>
     </div>
     )

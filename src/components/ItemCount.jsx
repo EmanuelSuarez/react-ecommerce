@@ -1,3 +1,4 @@
+import { render } from "@testing-library/react";
 import { useState, useContext } from "react"
 import { CartContext } from "./cart/CartContext";
 
@@ -15,29 +16,31 @@ export default function ItemCount({ product, toCart }) {
     const subs = () => {
         if (count > 0) {
             setCount(count - 1)
+            console.log('render');
         }
     }
 
+
     return (
         <>
-        <div className="container w-64 border-solid border-2 border-black">
-            <div className="flex justify-around mb-5">
+        <div className="container w-auto">
+            <div className="flex space-x-4 mb-5">
+                <div className="flex space-x-1">
+                    <button 
+                    className="rounded-sm bg-black p-2 w-10 text-white text-xl"
+                    onClick={subs}
+                    >-</button>
+                    <p 
+                    className="w-20 border-2 border-black pt-1 text-xl text-center"
+                    >{count}</p>
+                    <button
+                    className="rounded-sm bg-black p-2 w-10 text-white"
+                    onClick={adding}
+                    
+                    >+</button>
+                </div>
                 <button 
-                className="rounded-full bg-red-500 p-2 w-10"
-                onClick={subs}
-                >-</button>
-                <p 
-                
-                >{count}</p>
-                <button
-                className="rounded-full bg-green-500 p-2 w-10"
-                onClick={adding}
-                
-                >+</button>
-            </div>
-            <div className="flex items-center">
-                <button 
-                    className="rounded-full bg-blue-500 p-2 w-64"
+                    className="rounded-sm bg-black p-2 text-white text-xl"
                     onClick={() => {
                         addToCart({ ...product, count });
                         toCart(count);
